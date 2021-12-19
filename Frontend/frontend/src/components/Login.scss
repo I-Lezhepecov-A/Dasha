@@ -1,0 +1,94 @@
+.modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: #0d0d0d28;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+}
+
+.modal__container_log {
+    background-color: white;
+    width: 500px;
+    height: 300px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.75);
+    background-color: rgb(235, 250, 252);
+}
+
+.modal_registration_label {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+}
+
+.modal_input_data_container {
+    display: block;
+}
+
+.modal_input_data_container_element {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-wrap: wrap;
+}
+
+.modal_registration_input {
+    width: 250px;
+    height: 40px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    outline: none;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+}
+
+.modal_tab {
+    display: flex;
+    margin-left: 25px;
+}
+
+.modal_registration_account_button {
+    width: 100px;
+    height: 30px;
+    text-decoration: none;
+    display: inline-block;
+    width: 140px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 45px;
+    margin: 10px 20px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: #524f4e;
+    background: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    cursor: pointer;
+    user-select: none;
+}
+
+button:active,
+button:focus {
+    outline: none !important;
+}
+
+.modal_registration_account_button:hover {
+    background: #2ee59d;
+    box-shadow: 0 15px 20px rgba(46, 229, 157, 0.4);
+    color: white;
+    transform: translateY(-7px);
+}
