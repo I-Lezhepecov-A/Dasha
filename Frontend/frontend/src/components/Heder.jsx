@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {Link} from "react-router-dom";
 import { Nav } from 'react-bootstrap';
-// import './Header.css';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -21,13 +20,6 @@ export default function Header({user, setUser, userId, setUserId, setCard}) {
         setAnchorEl(null);
     };
 
-    const search = async () => {
-        setCard(await getFilteredData({
-            user: userId
-        }))
-    }
-
-
     return (
         <div className="container">
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -41,18 +33,36 @@ export default function Header({user, setUser, userId, setUserId, setCard}) {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
+                            {
+                                user === ''
+                                    ?
+                                <li className="nav-item d-flex">
+                                    <Link to={`/login`}>
+                                        <a className="nav-link" href="#">Login</a>
+                                    </Link>
+                                </li>
+                                :
+                                <li className="nav-item d-flex">
 
                             <li className="nav-item">
                                 <Link to={`/documents`}>
                                     <p className="nav-link active" aria-current="page" >Documnets</p>
                                 </Link>
                             </li>
-
-                            <li className="nav-item d-flex">
-                                <Link to={`/login`}>
-                                    <a className="nav-link" href="#">Login</a>
+                                <Link to={`/add_document`}>
+                                    <a className="nav-link" href="#">Add Documents</a>
                                 </Link>
+                                <Link to={`/add_document`}>
+                                    <a className="nav-link" href="#">Hi {user}</a>
+                                </Link>
+                                <MenuItem onClick={() => {
+                                    setUser('')
+                                    localStorage.setItem("userName", '')
+                                    handleClose()
+                                }}>Logout</MenuItem>
+
                             </li>
+                            }
                         </ul>
                     </div>
                 </div>

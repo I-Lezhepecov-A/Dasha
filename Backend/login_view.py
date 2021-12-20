@@ -32,13 +32,8 @@ class LoginUserView(APIView):
         # print("{} - {} --> {}".format(str(password), str(base64_bytes), str(password) != str(base64_bytes)))
         if str(password) != str(base64_bytes):
             return Response({"status":400, 'data':data}, status=status.HTTP_400_BAD_REQUEST)
-        # token = Token.objects.create(user=user)
-        # print(token.key)
-
         access_token = generate_access_token(user)
         refresh_token = generate_refresh_token(user)
-
-        # return Response("loginned", status=status.HTTP_200_OK)
         return Response(
             {
                 'access_token' : access_token,

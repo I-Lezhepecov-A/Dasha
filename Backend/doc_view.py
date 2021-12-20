@@ -1,5 +1,5 @@
 import json
-from .models import Document, User, Comment
+from .models import Document, User, Comment, Type
 from .serializers import DocumentSerializer, CommentSerializer
 from django.http import Http404
 from rest_framework.views import APIView
@@ -18,6 +18,20 @@ class DocumentView(APIView):
         return Response(serializer_data)
 
     def post(self, request, format=None):
+        type = request.data['type']
+        type = Type.objects.get(pk=type)
+        file_name = request.data['file_name']
+        user = request.data['user']
+        user = User.objects.get(pk=user)
+        description = request.data['description']
+        Document.objects.create(
+            user=user,
+            type=type,
+            file_name=file_name,
+            description=description
+            )
+        return Response({'msg':'model created'}, status=200)
+
         serializer = DocumentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

@@ -11,21 +11,21 @@ export default function Document(props) {
     console.log(props)
     const URL = `http://127.0.0.1:8000/sys/document/${props.match.params.id}`
     useEffect(() => {
-        console.log("asdf1")
         const fetchAPI = async () => {
             setDcm(await getData(URL))
-            console.log("asdf2")
         }
-        console.log("asdf3")
         fetchAPI();
-        console.log("asdf")
+    }, [])
+
+    const [userId, setUserId] = useState()
+
+    useEffect(() => {
+        setUserId(localStorage.getItem("id"))
     }, [])
 
     const file_name = {
         file_name : `/Volumes/Working/Projects/Django_Apps/PAS/Dasha_PAS/FileSys${dcm.file_name}`
     }
-    console.log(dcm)
-    console.log(file_name.file_name)
 
     if (!dcm) return(<div></div>)
     return (
@@ -57,7 +57,7 @@ export default function Document(props) {
                     </a>
                 </div>
             )}
-            <CreateComment document={dcm.id} from_user={dcm.user.id} to_user={dcm.user.id}/>
+            <CreateComment document={dcm.id} from_user={userId} to_user={dcm.user.id}/>
         </div>
     )
 }

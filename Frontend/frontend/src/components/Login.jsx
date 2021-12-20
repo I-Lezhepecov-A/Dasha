@@ -7,35 +7,6 @@ import {withRouter} from 'react-router-dom';
 import {postData ,sendLogInf, getUserInf} from "../api";
 import './Login.scss'
 
-// export default function Login() {
-//     const [login, setLogin] = useState([])
-//     const [password, setPassword] = useState([])
-
-//     const URL = `http://127.0.0.1:8000/sys/login`
-
-//     const fetchAPI = async () => {
-//         await postData(URL, data)
-//     }
-
-//     const data= {
-//             "password": password,
-//             "login": login
-//     }
-
-//     return (
-//         <div className="container">
-//             <p>login</p>
-//             <input type="text" onChange={(e) => setLogin(e.target.value)}/>
-//             <p></p>
-//             <p>password</p>
-//             <input type="password" onChange={(e) => setPassword(e.target.value)}/>
-//             <button onClick={fetchAPI}>submit</button>
-//         </div>
-//     )
-// }
-
-
-
 const Login = ({ setRole, close, setUser, history, setUserId }) => {
     const [logInf, setLogInf] = useState({
         'username': "",

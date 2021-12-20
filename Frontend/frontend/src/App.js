@@ -18,6 +18,8 @@ import Documents from "./components/Documents";
 import Document from "./components/Document"
 import {getData, getParams} from "./api/index";
 import Login from './components/Login'
+import CreateComment from './components/CreateComment';
+import CreateDocumnet from './components/CreateDocument';
 
 
 export default function App() {
@@ -27,13 +29,6 @@ export default function App() {
     const [user, setUser] = useState('')
     const [userId, setUserId] = useState()
 
-    // useEffect(() => {
-    //     const fetchParams = async () => {
-    //         await setParams(getParams())
-    //     }
-
-    //     fetchParams();
-    // }, [])
 
 
     useEffect(() => {
@@ -49,7 +44,7 @@ export default function App() {
             <Router>
 
             {/* <Header setCard={setCard} userId={userId} setUserId={setUserId} user={user} setUser={setUser}/> */}
-            <Header/>
+            <Header setCard={setCard} userId={userId} setUserId={setUserId} user={user} setUser={setUser}/>
                 <Switch>
                     <Route exact path="/documents">
                       <Documents params={params} documents={documents} setDocuments={setDocuments}/>
@@ -59,6 +54,7 @@ export default function App() {
                     <Route exact path="/login">
                         <Login setUserId={setUserId} setUser={setUser} />
                     </Route>
+                    <Route path='/add_document' component={CreateDocumnet}/>
                     {/* <Route exact path="cars/:id" render={(props)=>
                         <Item id={'cars/:id'.slice(6)}/>}
                     />
